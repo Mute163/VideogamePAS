@@ -1,0 +1,77 @@
+﻿@model Videogame.Models.ListPlayer
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Players</h1>
+
+<p>
+    <button class="btn btn-primary"><a style="text-decoration:none; color: white" asp-action="Create">Create New Player</a></button>
+</p>
+<form asp-controller="Player" asp-action="Index" method="get">
+    <p>
+
+        <select asp-for="PlayerNationality" asp-items="Model.Nationality">
+            <option value="">All</option>
+        </select>
+        <input type="submit" value="Filter" />
+
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Players[0].PlayerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Players[0].PlayerLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Players[0].BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Players[0].Nationality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Players[0].email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Players[0].CreateDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Players)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.PlayerId">Details</a> |
+                <button class="btn-primary"><a style="text-decoration: none; color: white" asp-action="Edit" asp-route-id="@item.PlayerId">Edit</a></button> |
+                <button class="btn-danger"><a style="text-decoration: none; color: white" asp-action="Delete" asp-route-id="@item.PlayerId">Delete</a></button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\jmgur\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\jmgur\\.nuget\\packages"
+    ]
+  }
+}
